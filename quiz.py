@@ -2,10 +2,17 @@ import random
 import os
 import time
 
-questions = [{"question":"Who created Python?: ","answer" : ["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuckerburg"],"correctAnswer":"A"},
-          {"question":"What year was Python created?: ","answer" : ["A. 1989", "B. 1991", "C. 2000", "D. 2016"],"correctAnswer":"B"},
-          {"question":"Python is tributed to which comedy group?: ","answer" : ["A. Lonely Island", "B. Smosh", "C. Monty Python", "D. SNL"],"correctAnswer":"C"},
-          {"question":"Is the Earth round?: ","answer" : ["A. True","B. False", "C. sometimes", "D. What's Earth?"],"correctAnswer":"A"}]
+questions = [{"question":"What was Albert Einstein's nationality?: ","answer" : ["A. American", "B. German", "C. Swiss", "D. Austrian"],"correctAnswer":"B"},
+          {"question":"What is Albert Einstein famous for?: ","answer" : ["A. His work on quantum mechanics", "B. His contributions to the development of the nuclear bomb", "C. His theory of relativity", "D. All of the above"],"correctAnswer":"D"},
+          {"question":"What was Albert Einstein's educational background?: ","answer" : ["A. He was a poor student in elementary school and was once expelled from school.", "B. He received a PhD in physics from the University of Zurich in 1905.", "C. He received a PhD in chemistry from the University of Berlin in 1911.", "D. He received a PhD in biology from the University of Vienna in 1914."],"correctAnswer":"B"},
+          {"question":"What was Albert Einstein's profession?: ","answer" : ["A. Theoretical physicist and academic","B. Industrial engineer", "C. Medical doctor", "D. Architect"],"correctAnswer":"A"},
+          {"question":"What was the first major scientific contribution of Albert Einstein?: ","answer" : ["A. The theory of special relativity", "B. The concept of mass-energy equivalence (E = mc^2)", "C. The explanation of the photoelectric effect", "D. All of the above"],"correctAnswer":"D"},
+          {"question":"What did Albert Einstein receive the Nobel Prize in Physics for?: ","answer" : ["A. His explanation of the photoelectric effect","B. His work on quantum mechanics", "C. His theory of relativity", "D. His contributions to the development of the nuclear bomb"],"correctAnswer":"A"},
+          {"question":"What was Albert Einstein's theory of relativity?: ","answer" : ["A. The idea that the laws of physics are the same for all observers, regardless of their relative motion","B. The concept of space-time, which combines the three dimensions of space with the fourth dimension of time into a single, unified structure", "C. Both A and B", "D. None of the above"],"correctAnswer":"C"},
+          {"question":"When and where did Albert Einstein die?: ","answer" : ["A. April 18, 1955, in Berlin, Germany","B. April 18, 1955, in Princeton, New Jersey, USA", "C. April 18, 1955, in Zurich, Switzerland", "D. April 18, 1955, in Vienna, Austria"],"correctAnswer":"B"},
+          {"question":"What was Albert Einstein's relationship to the development of the nuclear bomb?: ","answer" : ["A. He played a key role in the development of the bomb","B. He was opposed to the development of the bomb and spoke out against it", "C. He had no involvement in the development of the bomb", "D. He was neutral on the issue of the bomb's development"],"correctAnswer":"A"},
+          {"question":"What was Albert Einstein's political stance?: ","answer" : ["A. Conservative","B. Liberal", "C. Marxist", "D. He was apolitical"],"correctAnswer":"B"}
+          ]
 
 def gen_random_numbers_in_range(low, high, n):
     return random.sample(range(low, high), n)
@@ -17,6 +24,8 @@ def welcomeMessage():
 def startTheGame():
     os.system('cls')
     options = input("""
+     !!! You will have only 5 minutes to answer the questions !!!
+
      1 Help
      2 Play Quiz
      3 Quit
@@ -39,7 +48,7 @@ def startTheGame():
     if options == "2":
         os.system('cls')
         correctGuesses = 0
-        numberOfChances = 5
+        numberOfChances = 7
         questionsCount = len(questions)
         startTime = time.time()
         randomNumbers = gen_random_numbers_in_range(0, len(questions), len(questions))
@@ -71,7 +80,7 @@ def startTheGame():
         totalTime = round(endTime-startTime,2)
         os.system('cls')
         print("Your total score is : " + str(correctGuesses) + "  Or  " + str(correctGuesses/questionsCount * 100) + " % ")
-        if totalTime > 180:
+        if totalTime > 300:
             print("It took more than 3 minutes, Game Over!! OPS :(((((")
         else:
             print("Your total time is :" + str(totalTime) + " Second")    
