@@ -39,10 +39,12 @@ def startTheGame():
     if options == "2":
         os.system('cls')
         correctGuesses = 0
-        numberOfChances = 2
+        numberOfChances = 5
         questionsCount = len(questions)
+        startTime = time.time()
         randomNumbers = gen_random_numbers_in_range(0, len(questions), len(questions))
         print("You have :" + str(numberOfChances) + " Chances")
+        print("--------------------- \nThe timer has started\n ---------------------")
         for randomNumber in randomNumbers:  
          if numberOfChances<1:
              startTheGame()
@@ -65,6 +67,14 @@ def startTheGame():
             print("Your total score is : " + str(correctGuesses) + "  Or  " + str(correctGuesses/questionsCount * 100) + " % ")
             print("Wrong Answer, Answer next question:")
             print("----------------")
+        endTime = time.time()
+        totalTime = round(endTime-startTime,2)
+        os.system('cls')
+        print("Your total score is : " + str(correctGuesses) + "  Or  " + str(correctGuesses/questionsCount * 100) + " % ")
+        if totalTime > 180:
+            print("It took more than 3 minutes, Game Over!! OPS :(((((")
+        else:
+            print("Your total time is :" + str(totalTime) + " Second")    
         playAgain = input("Do you want to play again? Yes or No   :")   
         if playAgain == "Yes":
              os.system('cls')
@@ -76,7 +86,3 @@ def startTheGame():
 
 welcomeMessage()    
 startTheGame()
-
-# seconds = time.time()
-# local_time = time.ctime(seconds)
-# print("Local time:", local_time)
